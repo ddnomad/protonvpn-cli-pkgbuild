@@ -5,7 +5,7 @@ ARG host_user=defaultuser
 ENV HOST_USER=${host_user}
 
 # Update the system
-RUN pacman -Syu && \
+RUN pacman -Syu --noconfirm && \
     pacman -S --noconfirm base base-devel
 
 # Create test user
