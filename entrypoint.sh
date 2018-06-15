@@ -59,7 +59,6 @@ if test "$#" -lt 1; then
     exit 1
 fi
 
-
 # Resolve CLI arguments
 if test "$1" = '--bypass'; then
     # Setup Vi CLI mode if host user is ddnomad

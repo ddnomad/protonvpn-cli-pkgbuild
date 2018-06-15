@@ -15,7 +15,6 @@ all:
 build:
 	docker build . -t $(DOCKER_TAG) --build-arg host_user=`whoami`
 
-
 .PHONY: shell
 shell: build
 	docker run $(DOCKER_RUN_OPTS) $(DOCKER_TAG) --bypass /bin/bash -i
