@@ -1,7 +1,7 @@
 # Maintainer: ddnomad <dd at ddworks dot io>
 
 pkgname=protonvpn-cli
-pkgver=20180607
+pkgver=1562876722
 pkgrel=1
 pkgdesc="ProtonVPN CLI tool for protonvpn.com"
 arch=("any")
