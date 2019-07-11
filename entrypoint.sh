@@ -6,7 +6,7 @@
 # Usage:       Specify as Docker entrypoint. Options supported:
 #                  --bypass    Execute whatever command is following
 #                  --devenv    Start a development environment
-# Version:     0.0.1
+# Version:     0.0.2
 ###############################################################################
 set -euo pipefail
 
@@ -41,7 +41,11 @@ function test_buildpkg {
     echo '[+] Done'
 
     echo '[i] Testing whether the executable is in PATH and works'
-    if ! (which protonvpn-cli && which pvpn && pvpn --help) 1>/dev/null; then
+    if ! (
+        command -v protonvpn-cli && \
+        command -v pvpn && \
+        pvpn --help) 1>/dev/null
+    then
         echo '[-] Error: package was installed incorrectly'
         return 1
     fi

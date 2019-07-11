@@ -8,17 +8,17 @@ DOCKER_RUN_OPTS := --rm -it
 
 .PHONY: all
 all:
-	$(MAKE) test
+	$(MAKE) dtest
 
 
-.PHONY: build
-build:
+.PHONY: dbuild
+dbuild:
 	docker build . -t $(DOCKER_TAG) --build-arg host_user=`whoami`
 
-.PHONY: shell
-shell: build
+.PHONY: dshell
+dshell: dbuild
 	docker run $(DOCKER_RUN_OPTS) $(DOCKER_TAG) --bypass /bin/bash -i
 
-.PHONY: test
-test: build
+.PHONY: dtest
+dtest: dbuild
 	docker run $(DOCKER_RUN_OPTS) $(DOCKER_TAG) --test

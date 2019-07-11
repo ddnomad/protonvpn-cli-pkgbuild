@@ -1,4 +1,4 @@
-FROM base/archlinux
+FROM archlinux/base
 
 # Solely for an optional vi mode
 ARG host_user=defaultuser
@@ -12,6 +12,11 @@ RUN pacman -Syu --noconfirm && \
 RUN useradd --create-home test && \
     echo "test ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
+# Push an entrypoint
+COPY ./entrypoint.sh /tmp/entrypoint.sh
+RUN chmod +x /tmp/entrypoint.sh
+ENTRYPOINT ["/tmp/entrypoint.sh"]
+
 # Add PKGBUILD
 RUN mkdir /app
 WORKDIR /app
@@ -20,7 +25,3 @@ RUN chown -R test:test /app
 
 # Now running as a non-privileged user
 USER test:test
-
-# Push an entrypoint
-ADD ./entrypoint.sh /tmp/entrypoint.sh
-ENTRYPOINT ["/tmp/entrypoint.sh"]

@@ -38,7 +38,7 @@ package() {
     # Install protonvpn-cli package
     cd "${_protonvpn_src_dir}"
     install -Dm755 ./protonvpn-cli.sh "${pkgdir}/usr/bin/${pkgname}"
-    ln -s "${pkgdir}/usr/bin/${pkgname}" "${pkgdir}/usr/bin/pvpn"
+    ln -s "/usr/bin/${pkgname}" "${pkgdir}/usr/bin/pvpn"
 
     # Install the license
     install -Dm644 ./license.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
