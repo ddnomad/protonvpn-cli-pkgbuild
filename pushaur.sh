@@ -70,7 +70,7 @@ function push_to_aur {
 
 
 function main {
-    if test "$#" -lt 2; then
+    if test "$#" -lt 1; then
         echo '[-] Bad input arguments'
         exit 1
     fi
@@ -78,6 +78,11 @@ function main {
     if test "$1" == '-h'; then
         echo "${MSG_HELP}"
         exit 0
+    fi
+
+    if test "$#" -lt 2; then
+        echo '[-] Bad input arguments'
+        exit 1
     fi
 
     push_to_aur "$@"
